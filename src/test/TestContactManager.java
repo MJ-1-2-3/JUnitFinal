@@ -55,6 +55,12 @@ class TestContactManager {
 	}
 
 	@Test
+	void testAddContactFirstNullString() {
+		c.firstName = "";
+		assertFalse(manage.addContact(c));
+	}
+
+	@Test
 	void testAddContactLastNull() {
 		c.lastName = null;
 		assertFalse(manage.addContact(c));
@@ -83,8 +89,15 @@ class TestContactManager {
 	}
 
 	@Test
+	void testAddContactInvalidPhone() {
+		c.phoneNo = "22228888990";
+		assertFalse(manage.addContact(c));
+
+	}
+
+	@Test
 	void testAddContactDuplicate() {
-		Contact c1 = new Contact("Ammu","Joseph", "0000111129");
+		Contact c1 = new Contact("Ammu", "Joseph", "0000111129");
 		manage.addContact(c1);
 		Contact c2 = new Contact("Ann", "Saji", "0000111129");
 		assertFalse(manage.addContact(c2));
@@ -123,7 +136,8 @@ class TestContactManager {
 	@Test
 	void testDeleteContactAdded() {
 		Contact c = new Contact("Joseph", "P", "1234567880");
-		manage.addContact(c);
+		boolean x = manage.addContact(c);
+		System.out.println("Contact added: " + x); // Debug statement
 		assertTrue(manage.deleteContact(c.phoneNo));
 	}
 
