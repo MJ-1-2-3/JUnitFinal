@@ -12,7 +12,7 @@ public class ContactManager implements ContactInterface {
 		if (c.firstName == null || c.lastName == null || c.phoneNo == null)
 			return false;
 
-		if (!c.firstName.matches("^[a-zA-Z][a-zA-Z]*$") || !c.lastName.matches("^[a-zA-Z][a-zA-Z]*$"))
+		if (!c.firstName.matches("^[a-zA-Z]*$") || !c.lastName.matches("^[a-zA-Z]*$"))
 			return false;
 
 		if (!c.phoneNo.matches("\\d{10}"))
